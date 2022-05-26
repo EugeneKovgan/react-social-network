@@ -1,8 +1,8 @@
-import "./Profile.css"
+import classes from "./Profile.module.scss"
 
 const Profile = () => {
   return (
-    <div className="Profile">Profile</div>
+    <div className={classes.Profile}>Profile</div>
   )
 }
 

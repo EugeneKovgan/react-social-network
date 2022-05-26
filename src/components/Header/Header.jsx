@@ -1,8 +1,8 @@
-import "./Header.css"
+import classes from "./Header.module.scss"
 const Header = () => {
   return (
-    <div className="Header">
-      <div className="container">
+    <div className={classes.Header}>
+      <div className='container'>
         Header
       </div>
     </div>
