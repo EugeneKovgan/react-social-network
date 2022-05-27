@@ -1,7 +1,7 @@
-import classes from "./Header.module.scss"
+import styles from "./Header.module.scss"
 const Header = () => {
   return (
-    <div className={classes.Header}>
+    <div className={styles.Header}>
       <div className='container'>
         Header
       </div>

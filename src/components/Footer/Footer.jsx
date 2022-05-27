@@ -1,8 +1,8 @@
-import classes from "./Footer.module.scss"
+import styles from "./Footer.module.scss"
 
 const Footer = () => {
   return (
-    <div className={classes.Footer}>
+    <div className={styles.Footer}>
       <div className='container'>
         Footer
       </div>
