@@ -5,7 +5,7 @@ import avatar from "../../../assets/img/avatar.jpg";
 
 const Post = (props) => {
   return (
-    <Alert variant="success" className={styles.item}>
+    <Alert variant="success" className={styles.Post}>
       <Image roundedCircle src={avatar} alt="avatar"></Image>
       {props.message}
       <p className={styles.likes}>Likes { }</p>

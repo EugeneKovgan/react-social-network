@@ -6,7 +6,7 @@ import { Button, FormControl } from "react-bootstrap";
 const MyPosts = () => {
 
   return (
-    <div className={styles.myPostsBlock}>
+    <div className={styles.MyPosts}>
       <h3>My posts</h3>
       <div>
         <div>
