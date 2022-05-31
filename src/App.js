@@ -1,16 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Navbar from './components/Navbar/Navbar';
-import Dialogs from "./components/Dialogs/Dialogs";
-import Profile from "./components/Profile/Profile";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import logo from './logo.svg';
+import './App.css'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Navbar from './components/Navbar/Navbar'
+import Dialogs from "./components/Dialogs/Dialogs"
+import Profile from "./components/Profile/Profile"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className='App'>
         <Header />
 
         <div className='Main'>
@@ -19,7 +19,7 @@ const App = () => {
               <Navbar />
 
               <Routes>
-                <Route path="/dialogs" element={<Dialogs />} />
+                <Route path='/dialogs' element={<Dialogs />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
 
@@ -30,7 +30,7 @@ const App = () => {
         <Footer />
       </div>
     </BrowserRouter >
-  );
+  )
 }
 
-export default App;
+export default App

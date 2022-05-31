@@ -1,7 +1,11 @@
-.Post img {
-    height: 50px;
-    width: 50px;
-    margin-right: 10px;
+.Post {
+    margin: 0;
+    // margin-bottom: 0.5rem;
+    img {
+        height: 50px;
+        width: 50px;
+        margin-right: 0.5rem;
+    }
 }
 
 .likes {
