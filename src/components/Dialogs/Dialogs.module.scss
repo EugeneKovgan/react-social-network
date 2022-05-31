@@ -1,0 +1,13 @@
+.Dialogs {
+    background-color: aliceblue;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    .dialogsItems {
+        width: 20%;
+    }
+    .messages {
+        // width: 80%;
+    }
+}

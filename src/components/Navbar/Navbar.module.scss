@@ -1,5 +1,5 @@
 .Navbar {
-    background-color: aqua;
+    background-color: #dde2e0;
     min-height: 100%;
     min-width: 20%;
     padding: 0.5rem;
@@ -13,9 +13,6 @@
     color: black;
 
     &.active {
-        color: beige;
+        color: cadetblue;
     }
-}
-.item.active {
-    color: red;
 }
