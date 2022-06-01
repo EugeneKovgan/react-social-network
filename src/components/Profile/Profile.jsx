@@ -1,10 +1,11 @@
 import styles from './Profile.module.scss';
-import MyPosts from '../MyPosts/MyPosts';
+import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = () => {
     return (
         <div className={styles.Profile}>
-            Profile
+            <ProfileInfo />
             <MyPosts />
         </div>
     );

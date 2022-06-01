@@ -1,28 +1,41 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Dialogs.module.scss';
 
+const Dialog = (props) => {
+    return (
+        <div className={styles.dialog}>
+            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
+        </div>
+    );
+};
+
+const Message = (props) => {
+    return <div className={styles.message}>{props.message}</div>;
+};
+
+const dialogsData = [
+    { id: '1', name: 'Eugene' },
+    { id: '2', name: 'Eugene 2' },
+    { id: '3', name: 'Eugene 3' },
+    { id: '4', name: 'Eugene 4' },
+    { id: '5', name: 'Eugene 5' },
+];
+
+const messagesData = [
+    { id: '1', message: 'hi' },
+    { id: '2', message: 'hello' },
+    { id: '3', message: 'how are you?' },
+    { id: '4', message: 'hi' },
+];
+
+const dialogsElement = dialogsData.map((el) => <Dialog name={el.name} id={el.id} />);
+const messagesElements = messagesData.map((el) => <Message message={el.message} />);
+
 const Dialogs = () => {
     return (
         <div className={styles.Dialogs}>
-            <div className={styles.dialogsItems}>
-                <div className={styles.dialog}>
-                    <NavLink to='/dialogs/1'>Eugene</NavLink>
-                </div>
-                <div className={styles.dialog}>
-                    <NavLink to='/dialogs/2'>Eugene 2</NavLink>
-                </div>
-                <div className={styles.dialog}>
-                    <NavLink to='/dialogs/3'>Eugene 3</NavLink>
-                </div>
-                <div className={styles.dialog}>
-                    <NavLink to='/dialogs/4'>Eugene 4</NavLink>
-                </div>
-            </div>
-            <div className={styles.messages}>
-                <div className={styles.message}>hi</div>
-                <div className={styles.message}>hello </div>
-                <div className={styles.message}>how are you?</div>
-            </div>
+            <div className={styles.dialogsItems}>{dialogsElement}</div>
+            <div className={styles.messages}>{messagesElements}</div>
         </div>
     );
 };

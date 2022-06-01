@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='container'>
                 <div className={styles.footer_container}>
                     <div className='footer-info'>
-                        <h1>Social </h1>© 2022 Designed by Eugene Kovgan
+                        <h1>Social Network</h1> © 2022 Designed by Eugene Kovgan
                     </div>
                     <div className={styles.footer_github}>
                         <a href='https://github.com/eugenekovgan' target='blank'>
