@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import { Button, FormControl } from 'react-bootstrap';
 
 const MyPosts = (props) => {
-  const postsElement = props.postsData.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
+  const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
 
   return (
     <div className={styles.MyPosts}>

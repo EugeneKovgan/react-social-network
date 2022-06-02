@@ -20,8 +20,8 @@ const App = (props) => {
               <Navbar />
 
               <Routes>
-                <Route path='/dialogs/*' element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
-                <Route path="/profile" element={<Profile postsData={props.postsData} />} />
+                <Route path='/dialogs/*' element={<Dialogs state={props.state.dialogsPages} />} />
+                <Route path="/profile" element={<Profile state={props.state.profilePages} />} />
               </Routes>
 
             </div>
