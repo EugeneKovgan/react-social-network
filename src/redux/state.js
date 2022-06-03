@@ -23,7 +23,7 @@ const state = {
       { id: '3', message: 'how are you?' },
       { id: '4', message: 'hi' },
     ]
-  }
+  }, sidebar: { friends: '1' }
 
 
 }

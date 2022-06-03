@@ -5,16 +5,23 @@ import { Button, FormControl } from 'react-bootstrap';
 
 const MyPosts = (props) => {
   const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
+  let ref = React.createRef();
+  let addPost = () => {
+    let text = ref.current.value;
+    console.log(text);
+  };
 
   return (
     <div className={styles.MyPosts}>
       <h3>My posts</h3>
       <div>
         <div>
-          <FormControl as='textarea' />
+          <FormControl as='textarea' ref={ref} />
         </div>
         <div variant='buttons'>
-          <Button variant='primary'>Add post</Button>
+          <Button onClick={addPost} variant='primary'>
+            Add post
+          </Button>
           <Button variant='primary'>Delete post</Button>
         </div>
       </div>
