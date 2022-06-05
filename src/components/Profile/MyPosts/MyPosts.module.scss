@@ -1,15 +1,17 @@
 .MyPosts {
-    padding: 0.5rem;
-    background-color: aquamarine;
+  padding: 0.5rem;
+  background-color: aquamarine;
 }
 
 .posts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
-Button {
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
+.buttons {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }

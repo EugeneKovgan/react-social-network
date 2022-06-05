@@ -1,4 +1,6 @@
 
+import { rerenderEntireTree } from "../render"
+
 const state = {
   profilePages: {
     posts: [
@@ -6,8 +8,6 @@ const state = {
       { id: '2', message: 'hi how are you?', likes: '5' },
       { id: '3', message: 'im fine', likes: '21' },
     ],
-
-
   },
   dialogsPages: {
     dialogs: [
@@ -24,7 +24,12 @@ const state = {
       { id: '4', message: 'hi' },
     ]
   }, sidebar: { friends: '1' }
-
-
 }
+
+export let addPost = (postMessage) => {
+  let newPost = { id: 5, message: postMessage, likes: 5 }
+  state.profilePages.posts.push(newPost)
+  rerenderEntireTree(state)
+}
+
 export default state

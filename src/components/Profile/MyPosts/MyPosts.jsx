@@ -9,6 +9,8 @@ const MyPosts = (props) => {
   let addPost = () => {
     let text = ref.current.value;
     console.log(text);
+    props.addPost(text);
+    ref.current.value = '';
   };
 
   return (
@@ -18,7 +20,7 @@ const MyPosts = (props) => {
         <div>
           <FormControl as='textarea' ref={ref} />
         </div>
-        <div variant='buttons'>
+        <div className={styles.buttons}>
           <Button onClick={addPost} variant='primary'>
             Add post
           </Button>
