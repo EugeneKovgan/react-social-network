@@ -25,28 +25,27 @@ let store = {
       ]
     }, sidebar: { friends: '1' }
   },
+  _callSubscriber() {
+    console.log('state changed')
+  },
 
   getState() {
     return this._state
   },
+  subscriber(observer) { this._callSubscriber = observer },
 
-  callSubscriber() {
-    console.log('state changed')
-  },
-
-  addPost() {
-    let newPost = { id: 5, message: this._state.profilePages.newPostText, likes: 5 }
-    this._state.profilePages.posts.push(newPost)
-    this._state.profilePages.newPostText = ""
-    this.callSubscriber(this._state)
-  },
-
-  updateNewPost(newText) {
-    this._state.profilePages.newPostText = newText
-    this.callSubscriber(this._state)
-  },
-
-  subscriber(observer) { this.callSubscriber = observer }
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = { id: 5, message: this._state.profilePages.newPostText, likes: 5 }
+      this._state.profilePages.posts.push(newPost)
+      this._state.profilePages.newPostText = ""
+      this._callSubscriber(this._state)
+    }
+    else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePages.newPostText = action.newText
+      this._callSubscriber(this._state)
+    }
+  }
 }
 
 export default store

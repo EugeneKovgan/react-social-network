@@ -6,13 +6,13 @@ import { Button, FormControl } from 'react-bootstrap';
 const MyPosts = (props) => {
   const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
   let ref = React.createRef();
+
   let addPost = () => {
-    props.addPost();
-    props.updateNewPost('');
+    props.dispatch({ type: 'ADD-POST' });
   };
   let onPostChange = () => {
     let text = ref.current.value;
-    props.updateNewPost(text);
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
   };
 
   return (
