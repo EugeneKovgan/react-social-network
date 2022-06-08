@@ -2,17 +2,18 @@ import React from 'react';
 import styles from './MyPosts.module.scss';
 import Post from './Post/Post';
 import { Button, FormControl } from 'react-bootstrap';
+import { addPostActionCreator, updateNewPostDateActionCreator } from '../../../redux/state';
 
 const MyPosts = (props) => {
   const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
   let ref = React.createRef();
 
   let addPost = () => {
-    props.dispatch({ type: 'ADD-POST' });
+    props.dispatch(addPostActionCreator());
   };
   let onPostChange = () => {
     let text = ref.current.value;
-    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
+    props.dispatch(updateNewPostDateActionCreator(text));
   };
 
   return (
