@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './MyPosts.module.scss';
 import Post from './Post/Post';
 import { Button, FormControl } from 'react-bootstrap';
-import { addPostActionCreator, updateNewPostDateActionCreator } from '../../../redux/state';
+import { addPostActionCreator, updateNewPostDateActionCreator } from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
   const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);

@@ -18,7 +18,7 @@ const App = (props) => {
             <Navbar />
 
             <Routes>
-              <Route path='/dialogs/*' element={<Dialogs state={props.state.dialogsPages} />} />
+              <Route path='/dialogs/*' element={<Dialogs store={props.store} />} />
               <Route
                 path='/profile'
                 element={

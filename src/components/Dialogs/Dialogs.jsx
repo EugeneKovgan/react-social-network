@@ -3,14 +3,22 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { FormControl, Button } from 'react-bootstrap';
 import React from 'react';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
 
 const Dialogs = (props) => {
-  const dialogsElement = props.state.dialogs.map((el) => <DialogItem name={el.name} id={el.id} key={el.id} />);
-  const messagesElements = props.state.messages.map((el) => <Message message={el.message} key={el.id} />);
-  let ref = React.createRef();
-  let addMessage = () => {
-    let result = ref.current.value;
-    console.log(result);
+  let state = props.store.getState().dialogsPages;
+
+  const dialogsElement = state.dialogs.map((el) => <DialogItem name={el.name} id={el.id} key={el.id} />);
+  const messagesElements = state.messages.map((el) => <Message message={el.message} key={el.id} />);
+  const newMessageBody = state.newMessageBody;
+
+  let onSendMessageClick = () => {
+    props.store.dispatch(sendMessageCreator());
+  };
+
+  let onNewMessageChange = (event) => {
+    let body = event.target.value;
+    props.store.dispatch(updateNewMessageBodyCreator(body));
   };
 
   return (
@@ -19,13 +27,12 @@ const Dialogs = (props) => {
       <div className={styles.messages}>{messagesElements}</div>
       <div className={styles.newMessageBlock}>
         <div>
-          <FormControl as='textarea' ref={ref} />
+          <FormControl as='textarea' value={newMessageBody} onChange={onNewMessageChange} />
         </div>
         <div className={styles.buttons}>
-          <Button onClick={addMessage} variant='primary'>
+          <Button onClick={onSendMessageClick} variant='primary'>
             Add post
           </Button>
-          <Button variant='primary'>Delete post</Button>
         </div>
       </div>
     </div>
