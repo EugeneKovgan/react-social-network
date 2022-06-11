@@ -1,29 +1,32 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'normalize.css'
 import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import store from "./redux/redux-store"
-import { BrowserRouter } from "react-router-dom"
+import store from './redux/redux-store'
+import { BrowserRouter } from 'react-router-dom'
+// import StoreContext from "./StoreContext"
+import { Provider } from './StoreContext'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
-      </BrowserRouter >
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
     </React.StrictMode>
   )
 }
 
-rerenderEntireTree(store.getState())
+rerenderEntireTree()
 
 store.subscribe(() => {
-  let state = store.getState()
-  rerenderEntireTree(state)
+  rerenderEntireTree()
 })
 
 // If you want to start measuring performance in your app, pass a function

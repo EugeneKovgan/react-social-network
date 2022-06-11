@@ -6,10 +6,8 @@ import Profile from './components/Profile/Profile'
 import { Routes, Route } from 'react-router-dom'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 
-const App = (props) => {
-
+const App = () => {
   return (
-
     <div className='App'>
       <Header />
 
@@ -19,14 +17,8 @@ const App = (props) => {
             <Navbar />
 
             <Routes>
-              <Route path='/dialogs/*' element={<DialogsContainer store={props.store} />} />
-              <Route
-                path='/profile'
-                element={
-                  <Profile store={props.store}
-                  />
-                }
-              />
+              <Route path='/dialogs/*' element={<DialogsContainer />} />
+              <Route path='/profile' element={<Profile />} />
             </Routes>
 
           </div>
@@ -35,7 +27,6 @@ const App = (props) => {
 
       <Footer />
     </div>
-
   )
 }
 
