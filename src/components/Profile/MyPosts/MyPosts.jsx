@@ -2,18 +2,18 @@ import React from 'react';
 import styles from './MyPosts.module.scss';
 import Post from './Post/Post';
 import { Button, FormControl } from 'react-bootstrap';
-import { addPostActionCreator, updateNewPostDateActionCreator } from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
   const postsElement = props.posts.map((el) => <Post message={el.message} likes={el.likes} key={el.id} />);
   let ref = React.createRef();
 
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
+  let onAddPost = () => {
+    props.addPost();
   };
+
   let onPostChange = () => {
     let text = ref.current.value;
-    props.dispatch(updateNewPostDateActionCreator(text));
+    props.updateNewPostElement(text);
   };
 
   return (
@@ -24,7 +24,7 @@ const MyPosts = (props) => {
           <FormControl as='textarea' ref={ref} onChange={onPostChange} value={props.newPostText} />
         </div>
         <div className={styles.buttons}>
-          <Button onClick={addPost} variant='primary'>
+          <Button onClick={onAddPost} variant='primary'>
             Add post
           </Button>
           <Button variant='primary'>Delete post</Button>
