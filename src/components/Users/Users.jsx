@@ -1,40 +1,43 @@
-import React from 'react'
-import styles from './Users.module.scss'
-import { Image, Alert, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
-import axios from 'axios'
-import avatar from '../../assets/img/avatar.jpg'
-
+import React from 'react';
+import styles from './Users.module.scss';
+import { Image, Alert, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import avatar from '../../assets/img/avatar.jpg';
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props)
-
-    axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-      this.props.setUsers(response.data.items)
-    })
-
+  componentDidMount() {
+    axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
+      console.log(response.data.items);
+      this.props.setUsers(response.data.items);
+    });
   }
 
   render() {
     return (
       <div>
-        {/* <button onClick={this.getUsers}></button> */}
         {this.props.users.map((u) => (
           <Alert className={styles.block} key={u.id}>
             <span>
               <div className={styles.avatar}>
-                {/* <NavLink to={'/profile/' + u.id}> */}
                 {/* <Image roundedCircle src={u.photos.small != null ? u.photos.small : avatar} alt='img'></Image> */}
-                {/* </NavLink> */}
+                <Image roundedCircle src={avatar} alt='img'></Image>
               </div>
               <div>
                 {u.followed ? (
-                  <Button disabled={this.props.followingInProgress.some((id) => id === u.id)} onClick={() => { this.props.unfollow(u.id) }} >
+                  <Button
+                    onClick={() => {
+                      this.props.unfollow(u.id);
+                    }}
+                  >
                     UnFollow
                   </Button>
                 ) : (
-                  <Button disabled={this.props.followingInProgress.some((id) => id === u.id)} onClick={() => { this.props.follow(u.id) }} >
+                  <Button
+                    onClick={() => {
+                      this.props.follow(u.id);
+                    }}
+                  >
                     Follow
                   </Button>
                 )}
@@ -54,9 +57,8 @@ class Users extends React.Component {
           </Alert>
         ))}
       </div>
-    )
+    );
   }
 }
 
-
-export default Users
+export default Users;
