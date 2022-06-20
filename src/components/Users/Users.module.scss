@@ -1,12 +1,16 @@
+.Users {
+  width: 70vw;
+  overflow: hidden;
+}
 .avatar img {
   height: 50px;
   width: 50px;
 }
 
 .block {
-  margin: 10px;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
-
   // width: 100%;
 }
 
@@ -19,20 +23,15 @@ Button {
   font-weight: 600;
   color: brown;
 }
-// .currentPage {
-//   color: aqua;
-// }
-
 .pages_list {
-  // width: 100%;
-  max-width: 50vw;
-  overflow: hidden;
-  // cursor: pointer;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-around;
+  padding: 0.25rem 0 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  // width: 70vw;
+  // overflow: hidden;
 }
 
 .pages_list span {
-  padding: 5px;
+  // padding: 5px;
+  cursor: pointer;
 }
