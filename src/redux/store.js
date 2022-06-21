@@ -1,50 +1,52 @@
-import profileReducer from './profile-reducer'
-import dialogsReducer from './dialogs-reducer'
-import sidebarReducer from './sidebar-reducer'
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
-  _state: {
-    profilePages: {
-      posts: [
-        { id: '1', message: 'hi', likes: '2' },
-        { id: '2', message: 'hi how are you?', likes: '5' },
-        { id: '3', message: 'im fine', likes: '21' },
-      ],
-      newPostText: 'new text from state'
+    _state: {
+        profilePage: {
+            posts: [
+                { id: 1, message: "hello, is's my first post", likesCount: "2" },
+                { id: 2, message: "hello, is's my second post", likesCount: "12" },
+                { id: 3, message: "hello, is's empty post", likesCount: "5" },
+            ],
+            newPostText: "Message",
+        },
+        dialogsPage: {
+            dialogs: [
+                { id: 1, name: "Dimych" },
+                { id: 2, name: "Andry" },
+                { id: 3, name: "Ivan" },
+                { id: 4, name: "Denis" },
+                { id: 5, name: "Valera" },
+            ],
+            messages: [
+                { id: 1, message: "Hi, " },
+                { id: 2, message: "World" },
+            ],
+            newMessageBody: "",
+        },
+        sidebar: {},
     },
-    dialogsPages: {
-      dialogs: [
-        { id: '1', name: 'Eugene' },
-        { id: '2', name: 'Eugene 2' },
-        { id: '3', name: 'Eugene 3' },
-        { id: '4', name: 'Eugene 4' },
-        { id: '5', name: 'Eugene 5' },
-      ],
-      messages: [
-        { id: '1', message: 'hi' },
-        { id: '2', message: 'hello' },
-        { id: '3', message: 'how are you?' },
-        { id: '4', message: 'hi' },
-      ], newMessageBody: ""
-    }, sidebar: { friends: '1' }
-  },
-  _callSubscriber() {
-    console.log('state changed')
-  },
+    _callSubscriber() {
+        console.log("changed state");
+    },
 
-  getState() {
-    return this._state
-  },
-  subscriber(observer) { this._callSubscriber = observer },
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
 
-  dispatch(action) {
-    this._state.profilePages = profileReducer(this._state.profilePages, action)
-    this._state.dialogsPages = dialogsReducer(this._state.dialogsPages, action)
-    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarReducer = sidebarReducer(this._state.sidebar, action);
 
-    this._callSubscriber(this._state)
-  },
-}
+        this._callSubscriber(this._state);
+    },
+};
 
-
-export default store
+export default store;
+window.store = store;

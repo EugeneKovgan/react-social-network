@@ -1,43 +1,44 @@
-// import { NavLink } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import styles from './Navbar.module.scss';
+import React from "react";
+import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
-  return (
-    <div className={styles.Navbar}>
-      <ul className={styles.items_list}>
-        <li className={styles.item}>
-          <NavLink to='/profile' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            Profile
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink to='/dialogs' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            Messages
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink to='/users' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            Users
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink to='/news' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            News
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink to='/music' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            Music
-          </NavLink>
-        </li>
-        <li className={styles.item}>
-          <NavLink to='/settings' className={(navData) => (navData.isActive ? styles.active : styles.item)}>
-            Settings
-          </NavLink>
-        </li>
-      </ul>
-    </div>
-  );
+    return (
+        <nav defaultActiveKey="/home" className="flex-column" className={styles.nav}>
+            <ul>
+                <li className={styles.item}>
+                    <NavLink to="/profile" activeClassName={styles.activeLink}>
+                        Profile
+                    </NavLink>
+                </li>
+                <li className={styles.item}>
+                    <NavLink to="/dialogs" activeClassName={styles.activeLink}>
+                        Messages
+                    </NavLink>
+                </li>
+                <li className={styles.item}>
+                    <NavLink to="/users" activeClassName={styles.activeLink}>
+                        Users
+                    </NavLink>
+                </li>
+                <li className={styles.item}>
+                    <NavLink to="/news" activeClassName={styles.activeLink}>
+                        News
+                    </NavLink>
+                </li>
+                <li className={styles.item}>
+                    <NavLink to="/music" activeClassName={styles.activeLink}>
+                        Music
+                    </NavLink>
+                </li>
+                <li className={styles.item}>
+                    <NavLink to="/login" activeClassName={styles.activeLink}>
+                        Settings
+                    </NavLink>
+                </li>
+            </ul>
+        </nav>
+    );
 };
 
 export default Navbar;

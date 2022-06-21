@@ -1,0 +1,15 @@
+.nav {
+    grid-area: nav;
+    background-color: #dde2e0;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item {
+    /* color: black; */
+    margin-top: 10px;
+    margin-right: 10px;
+}

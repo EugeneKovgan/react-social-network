@@ -1,12 +1,12 @@
+import React from 'react';
 import styles from './ProfileInfo.module.scss';
 import bg_img from '../../../assets/img/bg-img.jpeg';
-import Preloader from '../../common/Preloader/Preloader';
+import Preloader from './../../common/Preloader/Preloader';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
-
   return (
     <div className={styles.ProfileInfo}>
       <div className={styles.img_container}>

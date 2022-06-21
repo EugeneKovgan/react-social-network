@@ -1,0 +1,21 @@
+.header {
+  grid-area: header;
+  background-color: cadetblue;
+}
+
+.header img {
+  width: 80px;
+}
+/* .Header {
+  background-color: antiquewhite;
+} */
+
+.loginBlock {
+  float: right;
+  margin: 15px 15px;
+  cursor: pointer;
+}
+
+.loginBlock a {
+  text-decoration: none;
+}

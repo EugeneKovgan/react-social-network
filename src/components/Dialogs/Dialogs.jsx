@@ -1,40 +1,61 @@
-import styles from './Dialogs.module.scss';
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
-import { FormControl, Button } from 'react-bootstrap';
+import React from "react";
+// import { NavLink } from "react-router-dom";
+import c from "./Dialogs.module.css";
+import DialogItem from "./DialogItem";
+import Message from "./Message";
+import { updateNewMessageBodyCreator, sendMessageCreator } from "../../redux/dialogs-reducer";
+import { Button } from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 
 const Dialogs = (props) => {
-  let state = props.dialogsPages;
+    let state = props.dialogsPage;
 
-  const dialogsElement = state.dialogs.map((el) => <DialogItem name={el.name} id={el.id} key={el.id} />);
-  const messagesElements = state.messages.map((el) => <Message message={el.message} key={el.id} />);
-  const newMessageBody = state.newMessageBody;
+    let dialogsElements = state.dialogs.map((dialog) => {
+        return <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />;
+    });
 
-  let onSendMessageClick = () => {
-    props.sendMessage();
-  };
+    let messagesElements = state.messages.map((m) => {
+        return <Message message={m.message} key={m.id} />;
+    });
+    let newMessageBody = state.newMessageBody;
 
-  let onNewMessageChange = (event) => {
-    let body = event.target.value;
-    props.updateNewMessageBody(body);
-  };
+    let onSendMessageClick = () => {
+        props.sendMessage();
+    };
 
-  return (
-    <div className={styles.Dialogs}>
-      <div className={styles.dialogsItems}>{dialogsElement}</div>
-      <div className={styles.messages}>{messagesElements}</div>
-      <div className={styles.newMessageBlock}>
-        <div>
-          <FormControl as='textarea' value={newMessageBody} onChange={onNewMessageChange} />
+    let onNewMessageChange = (event) => {
+        let body = event.target.value;
+        props.updateNewMessageBody(body);
+    };
+
+    if (!props.isAuth) {
+        return <Navigate to={"/login"} />;
+    }
+
+    return (
+        <div className={c.dialogs}>
+            <div className={c.dialogs_items}>{dialogsElements}</div>
+            <div className={c.messages}>
+                <div>{messagesElements}</div>
+                <div>
+                    <div>
+                        <FormControl
+                            as="textarea"
+                            value={newMessageBody}
+                            onChange={onNewMessageChange}
+                            placeholder="Enter your message"
+                        ></FormControl>
+                    </div>
+                    <div>
+                        <Button variant="primary" onClick={onSendMessageClick}>
+                            Send
+                        </Button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className={styles.buttons}>
-          <Button onClick={onSendMessageClick} variant='primary'>
-            Add post
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Dialogs;

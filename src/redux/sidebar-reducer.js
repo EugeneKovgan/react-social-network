@@ -1,9 +1,6 @@
-let initialState = {
-  sidebar: { friends: '1' }
-}
-
+let initialState = {};
 const sidebarReducer = (state = initialState, action) => {
-  return state
-}
+    return state;
+};
 
-export default sidebarReducer
+export default sidebarReducer;
