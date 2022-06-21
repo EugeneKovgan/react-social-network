@@ -9,7 +9,7 @@ import UsersContainer from './components/Users/UsersContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 
-const App = () => {
+const App = (props) => {
   return (
     <div className='App'>
       <Header />
@@ -22,7 +22,7 @@ const App = () => {
             <Routes>
               <Route path='/dialogs/*' element={<DialogsContainer />} />
               {/* <Route path='/profile' element={<Profile />} /> */}
-              <Route path='/profile' element={<ProfileContainer />} />
+              <Route path='/profile/*' element={<ProfileContainer />} />
               <Route path='/users' element={<UsersContainer />} />
               <Route path='/news' element={<News />} />
               <Route path='/music' element={<Music />} />

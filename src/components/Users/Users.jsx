@@ -31,6 +31,7 @@ let Users = (props) => {
         <Alert className={styles.block} key={u.id}>
           <span>
             <div className={styles.avatar}>
+              {/* <NavLink to={'./../profile/' + u.id}> */}
               <NavLink to={'/profile/' + u.id}>
                 <Image roundedCircle src={u.photos.small != null ? u.photos.small : avatar} alt='img'></Image>
               </NavLink>
