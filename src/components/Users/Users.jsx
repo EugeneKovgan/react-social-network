@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Users.module.css';
+import styles from './Users.module.scss';
 import { Image, Alert, Button } from 'react-bootstrap';
 import avatar from '../../assets/img/avatar.jpg';
 import { NavLink } from 'react-router-dom';
@@ -11,13 +11,12 @@ let Users = (props) => {
     pages.push(i);
   }
   return (
-    <div>
+    <div className={styles.Users}>
       <div className={styles.pages_list}>
         {pages.map((p) => {
           return (
             <span
               className={props.currentPage === p ? styles.selectedPage : undefined}
-              //   className={props.currentPage === p && styles.selectedPage}
               onClick={(e) => {
                 props.onPageChanged(p);
               }}
@@ -32,17 +31,12 @@ let Users = (props) => {
           <span>
             <div className={styles.avatar}>
               <NavLink to={'/profile/' + u.id}>
-                <Image
-                  roundedCircle
-                  src={u.photos.small != null ? u.photos.small : avatar}
-                  alt='img'
-                ></Image>
+                <Image roundedCircle src={u.photos.small != null ? u.photos.small : avatar} alt='img'></Image>
               </NavLink>
             </div>
             <div>
               {u.followed ? (
-                <Button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
+                <Button // disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     props.unfollow(u.id);
                   }}
@@ -51,7 +45,7 @@ let Users = (props) => {
                 </Button>
               ) : (
                 <Button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
+                  // disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     props.follow(u.id);
                   }}

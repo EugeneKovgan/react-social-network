@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './Post.module.css';
+import styles from './Post.module.scss';
 import { Image, Alert } from 'react-bootstrap';
 import avatar from '../../../../assets/img/avatar.jpg';
 

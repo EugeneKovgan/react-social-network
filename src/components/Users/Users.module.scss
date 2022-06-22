@@ -1,0 +1,39 @@
+.Users {
+}
+.avatar img {
+  height: 50px;
+  width: 50px;
+}
+
+.block {
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  // width: 100%;
+}
+
+Button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.selectedPage {
+  font-weight: 600;
+  color: brown;
+}
+.currentPage {
+  font-weight: 600;
+  color: brown;
+}
+.pages_list {
+  padding: 0.25rem 0 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 70vw;
+  overflow: hidden;
+}
+
+.pages_list span {
+  // padding: 5px;
+  cursor: pointer;
+}

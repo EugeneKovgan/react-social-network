@@ -12,11 +12,11 @@ let initialState = {
   pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
-  isFetching: true,
+  isFetching: false,
   followingInProgress: [],
 };
 
-const usereReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -132,4 +132,4 @@ export const unfollow = (userId) => {
   };
 };
 
-export default usereReducer;
+export default userReducer;
