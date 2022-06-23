@@ -1,19 +1,16 @@
 .header {
-  // grid-area: header;
   background-color: cadetblue;
   background-color: antiquewhite;
   font-style: normal;
   font-weight: normal;
-  // font-size: 0.75rem;
-  // line-height: 16px;
-  // color: #747474;
 }
 .header img {
   width: 80px;
 }
 .loginBlock {
-  float: right;
-  margin: 15px 15px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
   cursor: pointer;
 }
 .loginBlock a {
