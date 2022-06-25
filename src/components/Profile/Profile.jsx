@@ -4,7 +4,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
   return (
-    <div>
+    <div className={styles.ProfileBlock}>
       <ProfileInfo profile={props.profile} />
       <MyPostsContainer />
     </div>

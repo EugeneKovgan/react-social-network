@@ -30,9 +30,9 @@ class ProfileContainer extends React.Component {
     // }
 
     return (
-      <div>
-        <Profile {...this.props} profile={this.props.profile} />
-      </div>
+      // <div>
+      <Profile {...this.props} profile={this.props.profile} />
+      // </div>
     );
   }
 }
@@ -41,4 +41,16 @@ const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-export default compose(connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect)(ProfileContainer);
+const ProfileURLMatch = (props) => {
+  const match = useMatch('/profile/:userId/');
+  return <ProfileContainer {...props} match={match} />;
+};
+
+// export default compose(connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(
+  connect(mapStateToProps, { getUserProfile }),
+  withRouter
+  // withAuthRedirect
+)(ProfileURLMatch);
+
+// export default connect(mapStateToProps, { getUserProfile })(ProfileURLMatch);
