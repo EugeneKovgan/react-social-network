@@ -3,8 +3,10 @@ import Preloader from './../../common/Preloader/Preloader';
 import React from 'react';
 
 class ProfileStatus extends React.Component {
+  // statusInputRef = React.createRef();
   state = {
     editMode: false,
+    status: this.props.status,
   };
 
   activateEditMode = () => {
@@ -12,6 +14,10 @@ class ProfileStatus extends React.Component {
   };
   deactivateEditMode = () => {
     this.setState({ editMode: false });
+    this.props.updateStatus(this.state.status);
+  };
+  onStatusChange = (e) => {
+    this.setState({ status: e.currentTarget.value });
   };
 
   render() {
@@ -20,9 +26,15 @@ class ProfileStatus extends React.Component {
         ProfileStatus
         <div>
           {!this.state.editMode ? (
-            <div onDoubleClick={this.activateEditMode}>{this.props.status}</div>
+            <div onDoubleClick={this.activateEditMode}>{this.props.status || 'no status'}</div>
           ) : (
-            <input autoFocus={true} onBlur={this.deactivateEditMode} type='text' value={this.props.status} />
+            <input
+              onChange={this.onStatusChange}
+              autoFocus={true}
+              onBlur={this.deactivateEditMode}
+              type='text'
+              value={this.state.status}
+            />
           )}
         </div>
       </div>
