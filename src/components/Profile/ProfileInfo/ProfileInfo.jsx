@@ -17,11 +17,6 @@ const ProfileInfo = (props) => {
       <div className={styles.descriptionBlock}>
         <img src={props.profile.photos.large ? props.profile.photos.large : avatar} alt='img'></img>
         <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-        {/* <img src={props.profile.photos.large} alt='img'></img>
-        <div>{props.profile.fullName}</div>
-        <div>{props.profile.lookingForAJobDescription}</div>
-        <div>{props.profile.aboutMe}</div>
-        <div>{props.profile.contacts.github}</div> */}
       </div>
       descriptions + ava
     </div>
