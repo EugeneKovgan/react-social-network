@@ -3,17 +3,11 @@
   min-height: 100%;
   // min-width: 20%;
   padding: 0.25rem 1rem 0.25rem 1rem;
-}
-
-.item a {
-  color: black;
-  &.active {
-    color: cadetblue;
+  .item a {
+    color: black;
+    &.active {
+      color: cadetblue;
+      // background-color: aqua;
+    }
   }
-}
-
-.item {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
 }
