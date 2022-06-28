@@ -1,0 +1,11 @@
+.Login {
+  padding: 0.5rem;
+  background-color: aliceblue;
+  width: 100%;
+  .form {
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
