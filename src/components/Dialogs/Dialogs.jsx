@@ -1,11 +1,11 @@
 import styles from './Dialogs.module.scss';
 import DialogItem from './DialogItem';
 import Message from './Message';
-import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
-import { Button } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
+// import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
+// import { Button } from 'react-bootstrap';
+// import { FormControl } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
-import { reduxForm, Field, values } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
 const Dialogs = (props) => {
   let state = props.dialogsPage;
