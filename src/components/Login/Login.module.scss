@@ -8,4 +8,10 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+  span {
+    color: red;
+  }
+  .formSummaryError {
+    color: red;
+  }
 }

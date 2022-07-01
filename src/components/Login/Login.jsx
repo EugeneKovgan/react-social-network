@@ -13,9 +13,16 @@ const LoginForm = (props) => {
     <form onSubmit={props.handleSubmit}>
       <div className={styles.form}>
         <Field component={Input} name={'email'} placeholder='email' validate={[required]} />
-        <Field component={Input} name={'password'} placeholder='password' validate={[required, maxLength10]} />
-        <Field component={Input} name={'rememberMe'} type='checkbox' validate={[required, maxLength10]} />
+        <Field
+          component={Input}
+          name={'password'}
+          placeholder='password'
+          validate={[required, maxLength10]}
+          // type='password'
+        />
+        <Field component={Input} name={'rememberMe'} type='checkbox' />
         remember me
+        {props.error && <div className={styles.formSummaryError}>{props.error}</div>}
         <button>Login</button>
       </div>
     </form>
@@ -29,10 +36,11 @@ const LoginReduxForm = reduxForm({
 const Login = (props) => {
   const onSubmit = (formData) => {
     props.login(formData.email, formData.password, formData.rememberMe);
-    if (props.isAuth) {
-      return <Navigate to={'/profile'} />;
-    }
   };
+  if (props.isAuth) {
+    return <Navigate to={'/profile'} />;
+  }
+
   return (
     <div className={styles.Login}>
       <h3>Login</h3>
