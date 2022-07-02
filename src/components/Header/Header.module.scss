@@ -1,19 +1,28 @@
 .header {
   background-color: antiquewhite;
-  font-style: normal;
-  font-weight: normal;
   display: flex;
+  flex-direction: row;
   align-items: center;
-}
-.header img {
-  width: 80px;
+  justify-content: center;
 }
 .loginBlock {
   display: flex;
+  align-items: center;
+  // margin-top: 10px;
   justify-content: flex-end;
-  margin-top: 0.7rem;
   cursor: pointer;
 }
 .loginBlock a {
-  text-decoration: none;
+}
+.headerBlock {
+  display: flex;
+  cursor: pointer;
+  align-items: flex-end;
+  justify-content: center;
+  .headerBtn {
+    margin-left: 10px;
+  }
+}
+img {
+  width: 80px;
 }
