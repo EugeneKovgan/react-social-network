@@ -4,9 +4,9 @@ import dialogsReducer from './dialogs-reducer';
 import sidebarReducer from './sidebar-reducer';
 import userReducer from './user-reducer';
 import authReducer from './auth-reducer';
+import appReducer from './app-reducer';
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
-// import { Formik } from 'formik';
 
 let reducers = combineReducers({
   profilePage: profileReducer,
@@ -15,6 +15,7 @@ let reducers = combineReducers({
   usersPage: userReducer,
   auth: authReducer,
   form: formReducer,
+  app: appReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

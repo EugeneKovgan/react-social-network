@@ -1,9 +1,6 @@
 import styles from './Dialogs.module.scss';
 import DialogItem from './DialogItem';
 import Message from './Message';
-// import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
-// import { Button } from 'react-bootstrap';
-// import { FormControl } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import { Textarea } from '../common/FormControls/FormControls';
@@ -21,7 +18,6 @@ const Dialogs = (props) => {
   let messagesElements = state.messages.map((m) => {
     return <Message message={m.message} key={m.id} />;
   });
-  let newMessageBody = state.newMessageBody;
 
   let addNewMessage = (values) => {
     props.sendMessage(values.newMessageBody);
