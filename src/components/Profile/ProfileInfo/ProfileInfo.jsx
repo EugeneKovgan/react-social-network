@@ -3,7 +3,6 @@ import bg_img from '../../../assets/img/bg-img.jpeg';
 import avatar from '../../../assets/img/avatar.jpg';
 import Preloader from './../../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
-import { updateStatus } from '../../../redux/profile-reducer';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
