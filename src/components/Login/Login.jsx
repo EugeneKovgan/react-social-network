@@ -8,21 +8,15 @@ import { Navigate } from 'react-router-dom';
 
 const maxLength10 = maxLengthCreator(20);
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className={styles.form}>
         <Field component={Input} name={'email'} placeholder='email' validate={[required]} />
-        <Field
-          component={Input}
-          name={'password'}
-          placeholder='password'
-          validate={[required, maxLength10]}
-          // type='password'
-        />
+        <Field component={Input} name={'password'} placeholder='password' validate={[required, maxLength10]} />
         <Field component={Input} name={'rememberMe'} type='checkbox' />
         remember me
-        {props.error && <div className={styles.formSummaryError}>{props.error}</div>}
+        {error && <div className={styles.formSummaryError}>{error}</div>}
         <button>Login</button>
       </div>
     </form>

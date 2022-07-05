@@ -1,0 +1,19 @@
+.selectedPage {
+  font-weight: 600;
+  color: brown;
+}
+.currentPage {
+  font-weight: 600;
+  color: brown;
+}
+.pages_list {
+  padding: 0.25rem 0rem 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 10rem;
+  overflow: hidden;
+}
+
+.pages_list span {
+  cursor: pointer;
+}

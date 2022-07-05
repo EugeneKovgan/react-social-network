@@ -10,33 +10,4 @@
 .block {
   margin: 0 0.5rem 0.5rem 0.5rem;
   display: flex;
-  // width: 90%;
-  // width: 90vw;
-}
-
-// Button {
-//   margin-top: 10px;
-//   margin-right: 10px;
-// }
-
-.selectedPage {
-  font-weight: 600;
-  color: brown;
-}
-.currentPage {
-  font-weight: 600;
-  color: brown;
-}
-.pages_list {
-  padding: 0.25rem 0rem 0.25rem 0.5rem;
-  display: flex;
-  gap: 0.5rem;
-  width: 10rem;
-  // width: 40vw;
-  // width: 90%;
-  overflow: hidden;
-}
-
-.pages_list span {
-  cursor: pointer;
 }

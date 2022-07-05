@@ -45,7 +45,7 @@ class App extends React.Component {
 
                 {/* <Route path='/settings' element={<Settings />} /> */}
 
-                {/* <Route path='/login' element={<LoginPage />} /> */}
+                <Route path='/login' element={<LoginPage />} />
               </Routes>
             </div>
           </div>
@@ -62,4 +62,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(connect(mapStateToProps, { initializeApp }))(App);
-// export default connect(mapStateToProps, { getAuthUserData, logout })(HeaderContainer);

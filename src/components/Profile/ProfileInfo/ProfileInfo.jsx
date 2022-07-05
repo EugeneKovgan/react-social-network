@@ -4,8 +4,8 @@ import avatar from '../../../assets/img/avatar.jpg';
 import Preloader from './../../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
+  if (!profile) {
     return <Preloader />;
   }
   return (
@@ -14,8 +14,8 @@ const ProfileInfo = (props) => {
         <img src={bg_img} alt='bg_img' />
       </div> */}
       <div className={styles.descriptionBlock}>
-        <img src={props.profile.photos.large ? props.profile.photos.large : avatar} alt='img'></img>
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+        <img src={profile.photos.large ? profile.photos.large : avatar} alt='img'></img>
+        <ProfileStatus status={status} updateStatus={updateStatus} />
       </div>
       descriptions + ava
     </div>
