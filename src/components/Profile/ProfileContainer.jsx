@@ -5,7 +5,7 @@ import Profile from './Profile';
 import { getUserProfile } from './../../redux/profile-reducer';
 import { compose } from 'redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getStatus, updateStatus } from '../../redux/profile-reducer';
+import { getStatus, updateStatus, savePhoto } from '../../redux/profile-reducer';
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -18,7 +18,7 @@ function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.match ? this.props.match.params.userId : 'My ID';
     // let userId = this.props.match.params.userId;
     if (!userId) {
@@ -31,31 +31,44 @@ class ProfileContainer extends React.Component {
     this.props.getStatus(userId);
   }
 
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.refreshProfile();
+    }
+  }
+
   render() {
     return (
       <Profile
         {...this.props}
+        isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateStatus}
+        savePhoto={this.props.savePhoto}
       />
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
-  status: state.profilePage.status,
-  authorizedUserId: state.auth.userId,
-  isAuth: state.auth.isAuth,
-});
-
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
+  };
+};
 const ProfileURLMatch = (props) => {
   const match = useMatch('/profile/:userId/');
   return <ProfileContainer {...props} match={match} />;
 };
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
   withRouter
 )(ProfileURLMatch);
