@@ -5,7 +5,7 @@ import Profile from './Profile';
 import { getUserProfile } from './../../redux/profile-reducer';
 import { compose } from 'redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getStatus, updateStatus, savePhoto } from '../../redux/profile-reducer';
+import { getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profile-reducer';
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -19,8 +19,8 @@ function withRouter(Component) {
 
 class ProfileContainer extends React.Component {
   refreshProfile() {
-    let userId = this.props.match ? this.props.match.params.userId : 'My ID';
-    // let userId = this.props.match.params.userId;
+    // let userId = this.props.match ? this.props.match.params.userId : 'My ID';
+    let userId = this.props.match.params.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
       if (!userId) {
@@ -65,10 +65,11 @@ const mapStateToProps = (state) => {
 };
 const ProfileURLMatch = (props) => {
   const match = useMatch('/profile/:userId/');
+  // const match = useMatch('/profile');
   return <ProfileContainer {...props} match={match} />;
 };
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }),
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
   withRouter
 )(ProfileURLMatch);

@@ -14,11 +14,11 @@ let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...
       />
       {users.map((u) => (
         <User
+          key={u.id}
           user={u}
           followingInProgress={props.followingInProgress}
           follow={props.follow}
           unfollow={props.unfollow}
-          key={u.id}
         />
       ))}
     </div>

@@ -1,8 +1,8 @@
 .ProfileInfo {
-  padding: 10px;
+  // padding: 10px;
   .img_container {
     width: 100%;
-    height: 8rem;
+    height: 5rem;
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -12,10 +12,14 @@
     }
   }
   .descriptionBlock {
+    padding: 10px;
     img {
       width: 12rem;
       border-radius: 0.5rem;
       border: 2px white solid;
     }
+  }
+  .contactsBlock {
+    padding-left: 2rem;
   }
 }
