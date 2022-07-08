@@ -21,6 +21,7 @@ class ProfileContainer extends React.Component {
   refreshProfile() {
     // let userId = this.props.match ? this.props.match.params.userId : 'My ID';
     let userId = this.props.match.params.userId;
+    // let userId = this.props.router.params.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
       if (!userId) {
@@ -69,7 +70,12 @@ const ProfileURLMatch = (props) => {
   return <ProfileContainer {...props} match={match} />;
 };
 
+// export default compose(
+//   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
+//   withRouter
+// )(ProfileURLMatch);
+
 export default compose(
   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
   withRouter
-)(ProfileURLMatch);
+)(ProfileContainer);

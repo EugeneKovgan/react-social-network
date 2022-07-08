@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import { Navigate } from 'react-router-dom';
+
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
@@ -35,6 +37,7 @@ class App extends React.Component {
               <Navbar />
               <Suspense fallback={Preloader}>
                 <Routes>
+                  {/* <Route path='/' element={<Navigate to='/profile' />} /> */}
                   <Route path='/dialogs' element={<DialogsContainer />} />
 
                   <Route path='/profile/*' element={<ProfileContainer />} />
@@ -45,6 +48,7 @@ class App extends React.Component {
 
                   {/* <Route path='/settings' element={<Settings />} /> */}
                   <Route path='/login' element={<LoginPage />} />
+                  <Route path='*' element={<div>404 not found</div>} />
                 </Routes>
               </Suspense>
             </div>
