@@ -18,8 +18,17 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
+  catchAllUnhandledError = (reason, promise) => {
+    alert('some error');
+    console.log(reason);
+  };
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledError);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledError);
   }
 
   render() {
@@ -37,7 +46,7 @@ class App extends React.Component {
               <Navbar />
               <Suspense fallback={Preloader}>
                 <Routes>
-                  {/* <Route path='/' element={<Navigate to='/profile' />} /> */}
+                  <Route path='/' element={<Navigate to='/profile' />} />
                   <Route path='/dialogs' element={<DialogsContainer />} />
 
                   <Route path='/profile/*' element={<ProfileContainer />} />

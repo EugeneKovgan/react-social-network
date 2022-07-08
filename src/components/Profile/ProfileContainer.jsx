@@ -65,17 +65,17 @@ const mapStateToProps = (state) => {
   };
 };
 const ProfileURLMatch = (props) => {
-  const match = useMatch('/profile/:userId/');
-  // const match = useMatch('/profile');
+  // const match = useMatch('/profile/:userId/');
+  const match = useMatch('/profile');
   return <ProfileContainer {...props} match={match} />;
 };
-
-// export default compose(
-//   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
-//   withRouter
-// )(ProfileURLMatch);
 
 export default compose(
   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
   withRouter
-)(ProfileContainer);
+)(ProfileURLMatch);
+
+// export default compose(
+//   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
+//   withRouter
+// )(ProfileContainer);
