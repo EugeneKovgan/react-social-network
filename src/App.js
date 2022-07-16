@@ -10,7 +10,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { initializeApp } from './redux/app-reducer';
+import { initializeApp } from './redux/app-reducer.ts';
 import Preloader from './components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 
