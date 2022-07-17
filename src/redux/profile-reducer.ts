@@ -1,5 +1,6 @@
 import { usersAPI, profileAPI } from '../api/api';
 import { stopSubmit } from 'redux-form';
+import { PostType, ContactsType, ProfileType, PhotosType } from '../types/types';
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -12,24 +13,27 @@ let initialState = {
     {
       id: 1,
       message: "hello, it's my first post",
-      likesCount: '2',
+      likesCount: 2,
     },
     {
       id: 2,
       message: "hello, it's my second post",
-      likesCount: '12',
+      likesCount: 12,
     },
     {
       id: 3,
       message: "hello, it's my empty post",
-      likesCount: '5',
+      likesCount: 5,
     },
-  ],
-  profile: null,
+  ] as Array<PostType>,
+  profile: null as ProfileType | null,
   status: '',
+  newPostText: '',
 };
 
-const profileReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const profileReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case ADD_POST: {
       let newPost = {
@@ -56,63 +60,83 @@ const profileReducer = (state = initialState, action) => {
       return { ...state, posts: state.posts.filter((p) => p.id !== action.postId) };
     }
     case SAVE_PHOTO_SUCCESS: {
-      return { ...state, profile: { ...state.profile, photos: action.photos } };
+      return { ...state, profile: { ...state.profile, photos: action.photos } as ProfileType };
     }
     default:
       return state;
   }
 };
 
-export const addPostActionCreator = (newPostText) => ({
+type AddPostActionCreatorType = {
+  type: typeof ADD_POST;
+  newPostText: string;
+};
+export const addPostActionCreator = (newPostText: string): AddPostActionCreatorType => ({
   type: ADD_POST,
   newPostText,
 });
 
-export const setUserProfile = (profile) => ({
+type SetUserProfileType = {
+  type: typeof SET_USER_PROFILE;
+  profile: ProfileType;
+};
+export const setUserProfile = (profile: ProfileType): SetUserProfileType => ({
   type: SET_USER_PROFILE,
   profile,
 });
 
-export const setStatus = (status) => ({
+type SetStatusType = {
+  type: typeof SET_STATUS;
+  status: string;
+};
+export const setStatus = (status: string): SetStatusType => ({
   type: SET_STATUS,
   status,
 });
 
-export const deletePost = (postId) => ({
+type DeletePostType = {
+  type: typeof DELETE_POST;
+  postId: number;
+};
+export const deletePost = (postId: number): DeletePostType => ({
   type: DELETE_POST,
   postId,
 });
 
-export const savePhotoSuccess = (photos) => ({
+type SavePhotoSuccesstType = {
+  type: typeof SAVE_PHOTO_SUCCESS;
+  photos: PhotosType;
+};
+export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccesstType => ({
   type: SAVE_PHOTO_SUCCESS,
   photos,
 });
 
-export const getUserProfile = (userId) => async (dispatch) => {
+export const getUserProfile = (userId: number) => async (dispatch: any) => {
   const response = await usersAPI.getProfile(userId);
   dispatch(setUserProfile(response.data));
 };
 
-export const getStatus = (userId) => async (dispatch) => {
+export const getStatus = (userId: number) => async (dispatch: any) => {
   const response = await profileAPI.getStatus(userId);
   dispatch(setStatus(response.data));
 };
 
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status: string) => async (dispatch: any) => {
   const response = await profileAPI.updateStatus(status);
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
   }
 };
 
-export const savePhoto = (file) => async (dispatch) => {
+export const savePhoto = (file: any) => async (dispatch: any) => {
   const response = await profileAPI.savePhoto(file);
   if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));
   }
 };
 
-export const saveProfile = (profile) => async (dispatch, getState) => {
+export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
   const userId = getState().auth.userId;
   const response = await profileAPI.saveProfile(profile);
   if (response.data.resultCode === 0) {

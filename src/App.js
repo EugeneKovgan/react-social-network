@@ -6,11 +6,11 @@ import { Routes, Route } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
-import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
+import HeaderContainer from './components/Header/HeaderContainer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { initializeApp } from './redux/app-reducer.ts';
+import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 
@@ -49,7 +49,7 @@ class App extends React.Component {
                   <Route path='/' element={<Navigate to='/profile' />} />
                   <Route path='/dialogs' element={<DialogsContainer />} />
 
-                  <Route path='/profile/*' element={<ProfileContainer />} />
+                  <Route path='/profile/*' element={<ProfileContainer pageTitle={'samurai'} />} />
                   <Route path='/users' element={<UsersContainer />} />
 
                   <Route path='/news' element={<News />} />

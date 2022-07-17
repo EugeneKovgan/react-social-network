@@ -1,9 +1,21 @@
 import React from 'react';
 import styles from './Users.module.scss';
-import Pagination from '../../components/common/Pagination/Pagination';
+import Pagination from '../common/Pagination/Pagination';
 import User from './User';
+import { UserType } from '../../types/types';
 
-let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props }) => {
+type PropsType = {
+  currentPage: number;
+  totalUsersCount: number;
+  pageSize: number;
+  onPageChanged: (pageNumber: number) => void;
+  users: Array<UserType>;
+  followingInProgress: Array<number>;
+  follow: (userId: number) => void;
+  unfollow: (userId: number) => void;
+};
+
+let Users: React.FC<PropsType> = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props }) => {
   return (
     <div className={styles.Users}>
       <Pagination

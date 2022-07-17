@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import Profile from './Profile';
-import { getUserProfile } from './../../redux/profile-reducer';
+import { getUserProfile } from './../../redux/profile-reducer.ts';
 import { compose } from 'redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profile-reducer';
+import { getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profile-reducer.ts';
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
