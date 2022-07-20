@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { savePhoto, saveProfile } from '../redux/profile-reducer';
+import { ProfileType } from '../types/types';
 
 const instance = axios.create({
   withCredentials: true,
@@ -15,29 +15,29 @@ export const usersAPI = {
       return response.data;
     });
   },
-  follow(userId) {
+  follow(userId: number) {
     return instance.post(`follow/${userId}`);
   },
-  unfollow(userId) {
+  unfollow(userId: number) {
     return instance.delete(`follow/${userId}`);
   },
-  getProfile(userId) {
+  getProfile(userId: number) {
     console.warn('Obsolete method. Please profileAPI object');
     return profileAPI.getProfile(userId);
   },
 };
 
 export const profileAPI = {
-  getProfile(userId) {
+  getProfile(userId: number) {
     return instance.get(`profile/${userId}`);
   },
-  getStatus(userId) {
+  getStatus(userId: number) {
     return instance.get(`profile/status/${userId}`);
   },
-  updateStatus(status) {
+  updateStatus(status: string) {
     return instance.put(`profile/status`, { status: status });
   },
-  savePhoto(photoFile) {
+  savePhoto(photoFile: any) {
     const formData = new FormData();
     formData.append('image', photoFile);
 
@@ -47,17 +47,36 @@ export const profileAPI = {
       },
     });
   },
-  saveProfile(profile) {
+  saveProfile(profile: ProfileType) {
     return instance.put(`profile`, profile);
   },
+};
+export enum ResultCodesEnum {
+  Success = 0,
+  Error = 1,
+  CaptchaIsRequired = 10,
+}
+
+type MeResponseType = {
+  data: { id: number; email: string; login: string };
+  resultCode: ResultCodesEnum;
+  message: Array<string>;
+};
+
+type LoginMeResponseType = {
+  data: { userId: number };
+  resultCode: ResultCodesEnum;
+  message: Array<string>;
 };
 
 export const authAPI = {
   me() {
-    return instance.get(`auth/me`);
+    return instance.get<MeResponseType>(`auth/me`).then((res) => res.data);
   },
-  login(email, password, rememberMe = false, captcha = null) {
-    return instance.post(`auth/login`, { email, password, rememberMe, captcha });
+  login(email: string, password: string, rememberMe: boolean = false, captcha: null | string = null) {
+    return instance
+      .post<LoginMeResponseType>(`auth/login`, { email, password, rememberMe, captcha })
+      .then((res) => res.data);
   },
   logout() {
     return instance.delete(`auth/login`);
