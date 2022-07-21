@@ -54,6 +54,9 @@ export const profileAPI = {
 export enum ResultCodesEnum {
   Success = 0,
   Error = 1,
+}
+
+export enum ResultCodeForCaptcha {
   CaptchaIsRequired = 10,
 }
 
@@ -63,9 +66,9 @@ type MeResponseType = {
   message: Array<string>;
 };
 
-type LoginMeResponseType = {
+type LoginResponseType = {
   data: { userId: number };
-  resultCode: ResultCodesEnum;
+  resultCode: ResultCodesEnum | ResultCodeForCaptcha;
   message: Array<string>;
 };
 
@@ -75,7 +78,7 @@ export const authAPI = {
   },
   login(email: string, password: string, rememberMe: boolean = false, captcha: null | string = null) {
     return instance
-      .post<LoginMeResponseType>(`auth/login`, { email, password, rememberMe, captcha })
+      .post<LoginResponseType>(`auth/login`, { email, password, rememberMe, captcha })
       .then((res) => res.data);
   },
   logout() {
