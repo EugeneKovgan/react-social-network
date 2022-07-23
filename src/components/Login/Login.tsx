@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 import { AppStateType } from '../../redux/redux-store';
 import React from 'react';
 
-// const maxLength10 = maxLengthCreator(20);
+const maxLength10 = maxLengthCreator(20);
 
 type LoginFormOwnProps = {
   captchaUrl: string | null;
