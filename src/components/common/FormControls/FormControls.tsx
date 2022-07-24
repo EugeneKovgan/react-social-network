@@ -1,19 +1,16 @@
-import styles from './FormControls.module.scss';
-import { reduxForm, Field } from 'redux-form';
-import { FiledValidatorType } from '../../../utils/validators/validators';
 import React from 'react';
+import styles from './FormControls.module.scss';
+import { FiledValidatorType } from '../../../utils/validators/validators';
+import { Field, WrappedFieldProps } from 'redux-form';
+import { WrappedFieldMetaProps } from 'redux-form/lib/Field';
 
-type FormControlParamsType = {
-  meta: {
-    touched: boolean;
-    error: string;
-  };
-  children: React.ReactNode;
+type FormControlPropsType = {
+  meta: WrappedFieldMetaProps;
 };
 
-type FormControlType = (params: FormControlParamsType) => React.ReactNode;
+// type FormControlType = (params: FormControlPropsType) => React.ReactNode;
 
-const FormControl: FormControlType = ({ meta: { touched, error }, children }) => {
+const FormControl: React.FC<FormControlPropsType> = ({ meta: { touched, error }, children }) => {
   const hasError = touched && error;
   return (
     <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
@@ -23,8 +20,9 @@ const FormControl: FormControlType = ({ meta: { touched, error }, children }) =>
   );
 };
 
-export const Textarea = (props) => {
-  const { input, meta, child, ...restProps } = props;
+export const Textarea: React.FC<WrappedFieldProps> = (props) => {
+  // const { input, meta, child, ...restProps } = props;
+  const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
       <textarea {...input} {...restProps} />
@@ -32,8 +30,9 @@ export const Textarea = (props) => {
   );
 };
 
-export const Input = (props) => {
-  const { input, meta, child, ...restProps } = props;
+export const Input: React.FC<WrappedFieldProps> = (props) => {
+  // const { input, meta, child, ...restProps } = props;
+  const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
       <input {...input} {...restProps} />
@@ -41,16 +40,18 @@ export const Input = (props) => {
   );
 };
 
-export const createField = (
-  placeholder: string,
-  name: string,
+export function createField<FormKeysType extends string>(
+  placeholder: string | undefined,
+  name: FormKeysType,
   validators: Array<FiledValidatorType>,
-  component: string | React.Component | React.FC,
+  component: React.FC<WrappedFieldProps>,
   props = {},
   text = ''
-) => (
-  <div>
-    <Field placeholder={placeholder} name={name} validate={validators} component={component} {...props} />
-    {text}
-  </div>
-);
+) {
+  return (
+    <div>
+      <Field placeholder={placeholder} name={name} validate={validators} component={component} {...props} />
+      {text}
+    </div>
+  );
+}
