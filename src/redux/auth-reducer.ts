@@ -1,4 +1,6 @@
-import { authAPI, ResultCodesEnum, securityAPI, ResultCodeForCaptcha } from '../api/api';
+import { ResultCodesEnum, ResultCodeForCaptchaEnum } from '../api/api';
+import { securityAPI } from '../api/security-api';
+import { authAPI } from '../api/auth-api';
 import { stopSubmit } from 'redux-form';
 
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
@@ -72,7 +74,7 @@ export const login =
     if (data.resultCode === ResultCodesEnum.Success) {
       dispatch(getAuthUserData());
     } else {
-      if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
+      if (data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
         dispatch(getCaptchaUrl());
       }
       let message = data.message.length > 0 ? data.message[0] : 'Common error';
