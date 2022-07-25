@@ -3,7 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 import { usersAPI } from '../api/users-api';
 import { PhotosType, UserType } from '../types/types';
 import { updateObjectInArray } from '../utils/object-helpers';
-import { AppStateType, InferActionTypes } from './redux-store';
+import { AppStateType, InferActionTypes, BaseThunkType } from './redux-store';
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -105,7 +105,7 @@ export const actions = {
 
 type GetStateType = () => AppStateType;
 type DispatchType = Dispatch<ActionTypes>;
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>;
+type ThunkType = BaseThunkType<ActionTypes>;
 
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
   return async (dispatch, getState) => {
