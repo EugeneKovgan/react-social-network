@@ -1,9 +1,8 @@
 import { Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
 import { usersAPI } from '../api/users-api';
-import { PhotosType, UserType } from '../types/types';
+import { UserType } from '../types/types';
 import { updateObjectInArray } from '../utils/object-helpers';
-import { AppStateType, InferActionTypes, BaseThunkType } from './redux-store';
+import { InferActionsTypes, BaseThunkType } from './redux-store';
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -136,10 +135,8 @@ export const unfollow = (userId: number): ThunkType => {
   };
 };
 
-type ActionsTypes = InferActionTypes<typeof actions>;
 type InitialState = typeof initialState;
+type ActionsTypes = InferActionsTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsTypes>;
-// type GetStateType = () => AppStateType;
-// type DispatchType = Dispatch<ActionTypes>;
 
 export default userReducer;

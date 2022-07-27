@@ -2,7 +2,7 @@ import { usersAPI } from '../api/users-api';
 import { profileAPI } from '../api/profile-api';
 import { stopSubmit } from 'redux-form';
 import { PostType, ProfileType, PhotosType } from '../types/types';
-import { BaseThunkType, InferActionTypes } from './redux-store';
+import { BaseThunkType, InferActionsTypes } from './redux-store';
 
 let initialState = {
   posts: [
@@ -143,7 +143,7 @@ export const saveProfile =
   };
 
 export type InitialStateType = typeof initialState;
-type ActionsType = InferActionTypes<typeof actions>;
+type ActionsType = InferActionsTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsType | FormAction>;
 
 export default profileReducer;

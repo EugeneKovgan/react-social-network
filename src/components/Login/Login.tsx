@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './Login.module.scss';
-import { reduxForm, Field, InjectedFormProps } from 'redux-form';
+// import { reduxForm } from 'redux-form';
 import { Input, createField } from '../common/FormControls/FormControls';
-import { required, maxLengthCreator } from '../../utils/validators/validators';
+import { required } from '../../utils/validators/validators';
 import { connect } from 'react-redux';
 import { login } from '../../redux/auth-reducer';
 import { Navigate } from 'react-router-dom';
 import { AppStateType } from '../../redux/redux-store';
+import { reduxForm, InjectedFormProps } from 'redux-form';
 
 // const maxLength10 = maxLengthCreator(20);
 

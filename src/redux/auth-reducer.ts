@@ -2,7 +2,7 @@ import { ResultCodesEnum, ResultCodeForCaptchaEnum } from '../api/api';
 import { securityAPI } from '../api/security-api';
 import { authAPI } from '../api/auth-api';
 import { stopSubmit } from 'redux-form';
-import { BaseThunkType, InferActionTypes } from './redux-store';
+import { BaseThunkType, InferActionsTypes } from './redux-store';
 import { FormAction } from 'redux-form/lib/actions';
 
 let initialState = {
@@ -78,5 +78,5 @@ export const logout = (): ThunkType => async (dispatch: any) => {
 export default authReducer;
 
 export type InitialStateType = typeof initialState;
-type ActionsType = InferActionTypes<typeof actions>;
+type ActionsType = InferActionsTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsType | FormAction>;
